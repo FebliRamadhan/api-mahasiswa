@@ -3,7 +3,7 @@
 
 module.exports = (app) => {
 
-    app.post('/mahasiswas/create', [
+    app.post('/mahasiswas', [
         check('nim').not().isEmpty().trim().escape(),
         check('nama').not().isEmpty().trim().escape(),
         check('alamat').not().isEmpty().trim().escape(),
@@ -18,11 +18,11 @@ module.exports = (app) => {
         return mahasiswa.create(req, res);
     });
     
-    app.get('/mahasiswas/list', mahasiswa.findAll);
+    app.get('/mahasiswas', mahasiswa.findAll);
 
-    app.get('/mahasiswas/find/:mahasiswaId',mahasiswa.findOne);
+    app.get('/mahasiswas/:mahasiswaId',mahasiswa.findOne);
 
-    app.put('/mahasiswas/update/:mahasiswaId', [
+    app.put('/mahasiswas/:mahasiswaId', [
         check('nim').not().isEmpty().trim().escape(),
         check('nama').not().isEmpty().trim().escape(),
         check('alamat').not().isEmpty().trim().escape(),
@@ -37,6 +37,6 @@ module.exports = (app) => {
         return mahasiswa.update(req, res)
     });
 
-    app.delete('/mahasiswas/delete/:mahasiswaId', mahasiswa.delete);
+    app.delete('/mahasiswas/:mahasiswaId', mahasiswa.delete);
 
 }
